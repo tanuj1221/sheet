@@ -52,7 +52,6 @@ keras==2.9.0
 Keras-Preprocessing==1.1.2
 kiwisolver==1.4.2
 libclang==14.0.1
-mailer==0.8.1
 Markdown==3.3.7
 MarkupSafe==2.1.1
 matplotlib==3.5.2
