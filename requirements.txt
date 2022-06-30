@@ -1,3 +1,4 @@
+html5lib
 absl-py==1.0.0
 altgraph==0.17.2
 asttokens==2.0.5
