@@ -105,4 +105,5 @@ virtualenv-clone==0.5.7
 wcwidth==0.2.5
 Werkzeug==2.1.2
 wrapt==1.14.1
+lxml
 wsproto==1.1.0
