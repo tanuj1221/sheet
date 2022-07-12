@@ -1,5 +1,4 @@
 from __future__ import print_function
-
 import os.path
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -23,12 +22,14 @@ def sem():
 
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     options.add_argument("--window-size=1920,1080")
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
     options.add_argument(f'user-agent={user_agent}')
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
 
     driver.get(url)
     sleep(6)
@@ -75,6 +76,7 @@ def sem():
             majorDimension='ROWS',
             values=df.T.reset_index().T.values.tolist())
     ).execute()
+    driver.close()
 
 def asx():
     url = "https://www.asx.com.au/asx/v2/statistics/todayAnns.do"
@@ -85,11 +87,13 @@ def asx():
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     options.add_argument("--headless")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     options.add_argument("--window-size=1920,1080")
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
     options.add_argument(f'user-agent={user_agent}')
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
 
 
 
@@ -154,6 +158,7 @@ def asx():
             majorDimension='ROWS',
             values=df.T.reset_index().T.values.tolist())
     ).execute()
+    driver.close()
 
 
 @app.route('/main')  
