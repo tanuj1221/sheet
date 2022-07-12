@@ -1,6 +1,5 @@
 from __future__ import print_function
 import os.path
-from bs4 import BeautifulSoup
 import pandas as pd
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -40,7 +39,7 @@ def sem():
     sleep(6)
 
     r= driver.page_source
-    soup=BeautifulSoup(r, 'html.parser')
+ 
 
 
 
@@ -107,7 +106,7 @@ def asx():
         vgc.append(i.get_attribute('href'))
 
     r= driver.page_source
-    soup=BeautifulSoup(r, 'html.parser')
+   
 
 
     data = []
