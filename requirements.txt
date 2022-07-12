@@ -1,4 +1,6 @@
 flask
+html5lib
+lxml
 absl-py==1.0.0
 altgraph==0.17.2
 gunicorn
