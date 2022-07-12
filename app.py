@@ -166,10 +166,6 @@ def asxm():
     asx()
     return render_template('index.html')
 
-
-
-
-
 @app.route('/')  
 def message():
     sem()  
