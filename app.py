@@ -28,7 +28,7 @@ def sem():
     options.add_argument("--window-size=1920,1080")
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
     options.add_argument(f'user-agent={user_agent}')
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
+    driver = webdriver.Chrome( options=options)
 
     driver.get(url)
     sleep(6)
@@ -92,7 +92,7 @@ def asx():
     options.add_argument("--window-size=1920,1080")
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
     options.add_argument(f'user-agent={user_agent}')
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
+    driver = webdriver.Chrome(options=options)
 
 
 
@@ -100,7 +100,8 @@ def asx():
     vgc=[]
     driver.get(url)
     sleep(5)
-    links=driver.find_elements_by_css_selector('a')
+    link=driver.element_by_css_selector('table')
+    links=driver.link_elements_by_css_selector('a')
     for i in links:
         
         vgc.append(i.get_attribute('href'))
@@ -159,14 +160,17 @@ def asx():
     ).execute()
     driver.close()
 
-
+@app.route('/')  
+def messsage():
+     
+    return render_template('index.html') 
 @app.route('/main')  
 def asxm():
     asx()
     return render_template('index.html')
 
-@app.route('/')  
-def message():
+@app.route('/viva')  
+def viva():
     sem()  
     return render_template('index.html') 
 
