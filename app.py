@@ -170,6 +170,6 @@ def asxm():
 def message():
     sem()  
     return render_template('index.html') 
-if __name__ == '__main__':  
-   app.run(debug = False,port=80)  
-   
+
+if __name__ == "__main__":
+    app.run()
